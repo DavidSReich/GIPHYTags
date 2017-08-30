@@ -6,50 +6,43 @@
 //  Copyright © 2017 Stellar Software Pty Ltd. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ImageModelProtocol {
     func getImagePath() -> String
     func getTags() -> [String]
     func getIsGif() -> Bool
+    func getImageSize() -> CGSize
 }
 
 struct ImageModel {
     fileprivate var imagePath = ""
     fileprivate var tags = [String]()  //can't do Codable, because there is no simple mapping that will do String.components(separatedBy:)
-    fileprivate var isGif = false
+    fileprivate var isGif = true
+    fileprivate var imageSize = CGSize()
 
     //parse the json
-    init?(json: [String: Any], sourceType: UserDefaultsManager.ImageSource) {
+    init?(json: [String: Any]) {
+        //use guard and return nil because we don't want to create this without an imagePath
+        guard let images = json["images"] as? [String: Any],
+                let fixedWidth = images["fixed_width"] as? [String: Any],
+                let imagePath = fixedWidth["url"] as? String else { return nil }
 
-        if sourceType == .flickr {
-            //use guard and return nil because we don't want to create this without an imagePath
-            guard let media = json["media"] as? [String: Any],
-                let imagePath = media["m"] as? String else { return nil }
+        self.imagePath = imagePath
 
-            self.imagePath = imagePath
+        if let widthStr = fixedWidth["width"] as? String,
+                let widthDouble = Double(widthStr) {
+            imageSize.width = CGFloat(widthDouble)
+        }
 
-            if let tagString = json["tags"] as? String {
-                tags = tagString.components(separatedBy: " ")
-            }
+        if let heightStr = fixedWidth["height"] as? String,
+            let heightDouble = Double(heightStr) {
+            imageSize.height = CGFloat(heightDouble)
+        }
 
-            isGif = false
-        } else if sourceType == .giphy {
-            //use guard and return nil because we don't want to create this without an imagePath
-            guard let images = json["images"] as? [String: Any],
-                let fixedHeight = images["fixed_height"] as? [String: Any],
-                let imagePath = fixedHeight["url"] as? String else { return nil }
-
-            self.imagePath = imagePath
-
-            if let tagString = json["slug"] as? String {
-                tags = tagString.components(separatedBy: "-")
-                tags.removeLast()   //remove the id
-            }
-
-            isGif = true
-        } else {
-            //bad sourceType, bad sourceType
+        if let tagString = json["slug"] as? String {
+            tags = tagString.components(separatedBy: "-")
+            tags.removeLast()   //remove the id
         }
     }
 }
@@ -67,12 +60,16 @@ extension ImageModel: ImageModelProtocol {
     func getIsGif() -> Bool {
         return isGif
     }
+
+    func getImageSize() -> CGSize {
+        return imageSize
+    }
 }
 
 //Factory!
 extension ImageModel {
 
-    static func GetImages(from data: Data, sourceType: UserDefaultsManager.ImageSource) -> [ImageModelProtocol] {
+    static func GetImages(from data: Data) -> [ImageModelProtocol] {
         var imageModels = [ImageModelProtocol]()
 
         guard let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] else {
@@ -80,38 +77,14 @@ extension ImageModel {
             return imageModels
         }
 
-//        var json = [String: Any]()
-//
-//        if let json0 = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] {
-//            json = json0
-//        } else {
-//            print("JSON conversion FAILED - trying data=>String=>data")
-//            if let jsonString = String(data: data, encoding: .utf8) {
-//                print(">>> \(jsonString)")
-//                if let jsonData = jsonString.data(using: .utf8) {
-//                    if let json0 = (try? JSONSerialization.jsonObject(with: jsonData)) as? [String: Any] {
-//                        json = json0
-//                        print(">>> JSON via String worked!")
-//                    }
-//                }
-//            }
-//
-//            if json.count < 1 {
-//                print("Cannot convert data to JSON: \(data)")
-//                return imageModels
-//            }
-//        }
-
-        let allItemsKey = sourceType == .flickr ? "items" : "data"
-
-        guard let allItems = json[allItemsKey] as? [[String: Any]] else {
-            print("Cannot get \"\(allItemsKey)\" from json.")
+        guard let allItems = json["data"] as? [[String: Any]] else {
+            print("Cannot get \"data\" from json.")
             return imageModels
         }
 
         for fullItem in allItems {
             print("fullitem: \(fullItem)")
-            if let imageModel = ImageModel(json: fullItem, sourceType: sourceType) {
+            if let imageModel = ImageModel(json: fullItem) {
                 imageModels.append(imageModel)
             }
 

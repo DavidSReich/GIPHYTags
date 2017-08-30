@@ -15,7 +15,7 @@ class ImageViewWithAsynchLoader: UIImageView {
 
     private var downloadTask: URLSessionDataTask?
 
-    func loadCachedImageWithUrl(imageUrlString: String, imageViewHeightConstraint: NSLayoutConstraint, tableView: UITableView, isGif: Bool) {
+    func loadCachedImageWithUrl(imageUrlString: String, isGif: Bool) {
         self.image = nil
 
         //if we already are downloading a file stop it - we won't need that one.
@@ -25,8 +25,7 @@ class ImageViewWithAsynchLoader: UIImageView {
 
         //let's cache images - helpful if network is slow or we are actually viewing a lot more works
         if let cachedImage = ImageViewWithAsynchLoader.imageCache.object(forKey: imageUrlString as NSString) {
-            self.setImage(image: cachedImage, imageViewHeightConstraint: imageViewHeightConstraint, tableView: tableView)
-//            self.image = cachedImage
+            self.image = cachedImage
             return
         }
 
@@ -39,8 +38,7 @@ class ImageViewWithAsynchLoader: UIImageView {
                 }
                 DispatchQueue.main.async {
                     ImageViewWithAsynchLoader.imageCache.setObject(image, forKey: imageUrlString as NSString)
-                    self.setImage(image: image, imageViewHeightConstraint: imageViewHeightConstraint, tableView: tableView)
-//                    self.image = image
+                    self.image = image
                 }
             }
         } else {
@@ -61,12 +59,7 @@ class ImageViewWithAsynchLoader: UIImageView {
 
                 DispatchQueue.main.async(execute: { () -> Void in
                     ImageViewWithAsynchLoader.imageCache.setObject(image, forKey: imageUrlString as NSString)
-                    self.setImage(image: image, imageViewHeightConstraint: imageViewHeightConstraint, tableView: tableView)
-//                    self.image = image
-//                    let aspect = image.size.height / image.size.width
-//                    imageViewHeightConstraint.constant = aspect * self.bounds.width
-//                    self.superview?.needsUpdateConstraints()
-//                    self.superview?.updateConstraints()
+                    self.image = image
                 })
             }
 
@@ -76,21 +69,5 @@ class ImageViewWithAsynchLoader: UIImageView {
 
             task.resume()
         }
-    }
-
-    private func setImage(image: UIImage, imageViewHeightConstraint: NSLayoutConstraint, tableView: UITableView) {
-        self.image = image
-        let aspect = image.size.height / image.size.width
-        tableView.beginUpdates()
-        imageViewHeightConstraint.constant = aspect * self.bounds.width
-        self.superview?.needsUpdateConstraints()
-        self.superview?.updateConstraints()
-        tableView.needsUpdateConstraints()
-        tableView.updateConstraints()
-//        tableView.setNeedsLayout()
-//        tableView.layoutIfNeeded()
-//        tableView.layoutSubviews()
-        tableView.reloadRows(at: tableView.indexPathsForVisibleRows!, with: .none)
-        tableView.endUpdates()
     }
 }

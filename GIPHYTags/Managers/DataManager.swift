@@ -18,7 +18,7 @@ class DataManager {
 
     fileprivate var imageDataSource = ImageDataSource(with: [])
 
-    func populateDataSource(tagsString: String, sourceType: UserDefaultsManager.ImageSource, completion: @escaping () -> ()) {
+    func populateDataSource(tagsString: String, completion: @escaping () -> ()) {
 
         let result = JSONNetworkService.getJSON(tagsString: tagsString) { data, error in
             guard error == nil else {
@@ -30,7 +30,7 @@ class DataManager {
                 return
             }
 
-            let imagemodels = ImageModel.GetImages(from: data, sourceType: sourceType)
+            let imagemodels = ImageModel.GetImages(from: data)
             print("imagemodels: \(imagemodels)")
 
             self.imageDataSource = ImageDataSource(with: imagemodels)

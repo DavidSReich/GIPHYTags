@@ -13,8 +13,6 @@ class SettingsViewController: UIViewController {
     let unwindFromSettingsID = "unwindFromSettingsToMainView"
 
     @IBOutlet weak var tagsTextField: UITextField!
-    @IBOutlet weak var imageSourceControl: UISegmentedControl!
-//    @IBOutlet weak var apiURLTextView: UITextView!
     @IBOutlet weak var numberOfImagesStepper: UIStepper!
     @IBOutlet weak var numberOfImagesLabel: UILabel!
     @IBOutlet weak var numberOfLevelsStepper: UIStepper!
@@ -24,11 +22,6 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         updateControls()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -53,27 +46,18 @@ class SettingsViewController: UIViewController {
 
     private func updateControls() {
         self.navigationItem.title = "Settings"
-//        apiURLTextView.layer.borderWidth = 1
-//        apiURLTextView.layer.borderColor = UIColor.darkGray.cgColor
-//        apiURLTextView.layer.cornerRadius = 2
     }
 
     private func loadSettings() {
         tagsTextField.text = UserDefaultsManager.getInitialTags()
-//        apiURLTextView.text = UserDefaultsManager.getAPIURL()
         numberOfImagesStepper.value = Double(UserDefaultsManager.getMaxNumberOfImages())
         numberOfImagesLabel.text = String(Int(numberOfImagesStepper.value))
         numberOfLevelsStepper.value = Double(UserDefaultsManager.getMaxNumberOfLevels())
         numberOfLevelsLabel.text = String(Int(numberOfLevelsStepper.value))
-        let imageSourceStr = UserDefaultsManager.getImageSource().rawValue
-        guard imageSourceControl.numberOfSegments > 1 else { return }
-        imageSourceControl.selectedSegmentIndex = imageSourceControl.titleForSegment(at: 1)?.lowercased() == imageSourceStr.lowercased() ? 1 : 0
     }
 
     private func saveSettings() {
-        UserDefaultsManager.setImageSource(imageSourceString: (imageSourceControl.titleForSegment(at: imageSourceControl.selectedSegmentIndex)?.lowercased())!)
         UserDefaultsManager.setInitialTags(initialTags: tagsTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines))
-//        UserDefaultsManager.setAPIURL(apiUrl: apiURLTextView.text)
         UserDefaultsManager.setMaxNumberOfImages(maxNumber: Int(numberOfImagesStepper.value))
         UserDefaultsManager.setMaxNumberOfLevels(maxNumber: Int(numberOfLevelsStepper.value))
     }

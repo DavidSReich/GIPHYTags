@@ -78,7 +78,7 @@ class MainViewController: UIViewController {
         //clear and then reloadData with empty in case populateDataSource fails - if it fails it won't call any of the completion callbacks.
         dataManager.clearDataSource()
         imagesTableView.reloadData()
-        dataManager.populateDataSource(tagsString: imageTags, sourceType: UserDefaultsManager.getImageSource()) {
+        dataManager.populateDataSource(tagsString: imageTags) {
             self.imagesTableView.reloadData()
         }
     }

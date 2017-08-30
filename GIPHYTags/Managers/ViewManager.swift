@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ImageTableViewCellProtocol {
-    func setupCell(imagePath: String, tableView: UITableView, isGif: Bool)
+    func setupCell(imagePath: String, isGif: Bool)
 }
 
 class ViewManager: NSObject {
@@ -33,7 +33,7 @@ extension ViewManager: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID)
         if let imageModel = dataManagerDelegate.getImageModel(index: indexPath.row) {
             if let protocolCell = cell as? ImageTableViewCellProtocol {
-                protocolCell.setupCell(imagePath: imageModel.getImagePath(), tableView: tableView, isGif: imageModel.getIsGif())
+                protocolCell.setupCell(imagePath: imageModel.getImagePath(), isGif: imageModel.getIsGif())
             }
         }
 
@@ -43,18 +43,18 @@ extension ViewManager: UITableViewDataSource {
 }
 
 extension ViewManager: UITableViewDelegate {
-    //These help automatic height calculation.
-    //This could be done by setting the table view's properties instead.
-    //But, we don't have (or want) access to the table view here,
-    //and setting those properties in the MainVC sort of puts them where we don't want them.
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        if let imageModel = dataManagerDelegate.getImageModel(index: indexPath.row) {
+            let imageSize = imageModel.getImageSize()
+            let aspect = imageSize.height / imageSize.width
+            return 150 * aspect
+        }
+
+        return 150
     }
 
-
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return 150
     }
 }
 
