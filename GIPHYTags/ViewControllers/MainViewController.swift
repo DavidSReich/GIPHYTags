@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     private var viewManager: ViewManager?
 
     fileprivate var viewControllerLevel = 0
-    fileprivate var imageTags = ""
+    fileprivate var imageTags = UserDefaultsManager.getInitialTags()
     fileprivate var selectedTags = ""
 
     override func viewDidLoad() {
@@ -31,13 +31,14 @@ class MainViewController: UIViewController {
 
         viewManager = ViewManager(dataManagerDelegate: dataManager)
         imagesTableView.dataSource = viewManager
+        imagesTableView.delegate = viewManager
 
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
         imagesTableView.refreshControl = refreshControl
 
-        loadEverything()
         updateControls()
+        loadEverything()
     }
 
     @objc func refreshTableView(refreshControl: UIRefreshControl) {
@@ -77,7 +78,7 @@ class MainViewController: UIViewController {
         //clear and then reloadData with empty in case populateDataSource fails - if it fails it won't call any of the completion callbacks.
         dataManager.clearDataSource()
         imagesTableView.reloadData()
-        dataManager.populateDataSource(tagsString: imageTags) {
+        dataManager.populateDataSource(tagsString: imageTags, sourceType: UserDefaultsManager.getImageSource()) {
             self.imagesTableView.reloadData()
         }
     }
@@ -136,7 +137,7 @@ extension MainViewController {
         if let selectorViewController = segue.source as? SelectorViewController {
             //Coming back from the Selector VC - get whatever was selected
             let selectedTags = selectorViewController.getSelectionPicked()
-            self.selectedTags = selectedTags.joined(separator: ",")
+            self.selectedTags = selectedTags.joined(separator: UserDefaultsManager.tagsSeparator)
         }
     }
 

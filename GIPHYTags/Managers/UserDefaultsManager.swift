@@ -8,32 +8,61 @@
 
 import Foundation
 
+//UserDefaults plus ...
+
 class UserDefaultsManager {
 
-    static let APIURLKey = "apiurl"
+    enum ImageSource: String {
+        case giphy
+        case flickr
+    }
+
+    static let ImageSourceKey = "imagesource"
     static let InitialTagsKey = "initialtags"
     static let MaxNumberOfImagesKey = "maxnumberofImages"
     static let MaxNumberOfLevelsKey = "maxnumberofLevels"
 
-    static let defaultAPIURL = "http://api.flickr.com/services/feeds/photos_public.gne?&format=json&nojsoncallback=1&tags="
-    static let defaultInitialTags = "weather"  //comma delimited list i.e. "tag1,tag2,tag3"
-    static let defaultMaxNumberOfImages = 20
+    //https://api.giphy.com/v1/gifs/search?api_key=39e2cefae3444ec79e277251af1f0848&q=funny+cat
+	//"https://api.giphy.com/v1/gifs/search?api_key=39e2cefae3444ec79e277251af1f0848&limit=25&offset=0&rating=G&lang=en&q=cows"
+    static let GIPHYApiKey = "39e2cefae3444ec79e277251af1f0848"
+    static let giphyAPIURL = "https://api.giphy.com/v1/gifs/search?api_key=" + GIPHYApiKey + "&q="
+    static let flickrAPIURL = "http://api.flickr.com/services/feeds/photos_public.gne?&format=json&nojsoncallback=1&tags="
+
+    static let defaultImageSource = ImageSource.giphy
+    static let defaultInitialTags = "weather"  //plus delimited list i.e. "tag1+tag2+tag3", or comma delimited, etc.
+    static let defaultMaxNumberOfImages = 25
     static let defaultMaxNumberOfLevels = 10
 
     static let appDefaults = UserDefaults.standard
 
+    class var tagsSeparator: String {
+        get {
+            return UserDefaultsManager.getImageSource() == ImageSource.flickr ? "," : "+"
+        }
+    }
+
     //these could be get/set properties
 
     class func getAPIURL(defaults: UserDefaults = UserDefaultsManager.appDefaults) -> String {
-        return defaults.string(forKey: APIURLKey) ?? defaultAPIURL
+        return UserDefaultsManager.getImageSource() == ImageSource.flickr ? flickrAPIURL : giphyAPIURL
     }
 
-    class func setAPIURL(apiUrl: String?, defaults: UserDefaults = UserDefaultsManager.appDefaults) {
-        defaults.set(apiUrl, forKey: APIURLKey)
+    class func getImageSource(defaults: UserDefaults = UserDefaultsManager.appDefaults) -> ImageSource {
+        guard let imageSourceString = defaults.string(forKey: ImageSourceKey) else {
+            return defaultImageSource
+        }
+        return ImageSource(rawValue: imageSourceString) ?? defaultImageSource
+    }
+
+    class func setImageSource(imageSourceString: String, defaults: UserDefaults = UserDefaultsManager.appDefaults) {
+        defaults.set(imageSourceString, forKey: ImageSourceKey)
     }
 
     class func getInitialTags(defaults: UserDefaults = UserDefaultsManager.appDefaults) -> String {
-        return defaults.string(forKey: InitialTagsKey) ?? defaultInitialTags
+        guard let tags = defaults.string(forKey: InitialTagsKey) else {
+            return defaultInitialTags
+        }
+        return tags.isEmpty ? defaultInitialTags : tags
     }
 
     class func setInitialTags(initialTags: String?, defaults: UserDefaults = UserDefaultsManager.appDefaults) {

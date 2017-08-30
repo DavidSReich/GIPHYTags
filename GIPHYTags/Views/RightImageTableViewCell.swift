@@ -11,7 +11,8 @@ import UIKit
 class RightImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imageViewWithLoader: ImageViewWithAsynchLoader!
-
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,7 +26,7 @@ class RightImageTableViewCell: UITableViewCell {
 }
 
 extension RightImageTableViewCell: ImageTableViewCellProtocol {
-    func setupCell(imagePath: String) {
-        imageViewWithLoader.loadCachedImageWithUrl(imageUrlString: imagePath)
+    func setupCell(imagePath: String, tableView: UITableView, isGif: Bool) {
+        imageViewWithLoader.loadCachedImageWithUrl(imageUrlString: imagePath, imageViewHeightConstraint: imageViewHeightConstraint, tableView: tableView, isGif: isGif)
     }
 }

@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,60 +14,69 @@
         <!--MainViewController-->
         <scene sceneID="tJc-5g-akv">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" title="MainViewController" id="B9G-8m-3M6" customClass="MainViewController" customModule="FlickrBrowsr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="MainViewController" id="B9G-8m-3M6" customClass="MainViewController" customModule="GIPHYTags" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D8a-we-nI8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ycx-qV-Qbz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ycx-qV-Qbz">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LeftTableViewCell" id="rt7-a0-7Yc" customClass="LeftImageTableViewCell" customModule="FlickrBrowsr" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LeftTableViewCell" id="rt7-a0-7Yc" customClass="LeftImageTableViewCell" customModule="GIPHYTags" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rt7-a0-7Yc" id="sSM-5z-hnL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q5g-dk-bUz" customClass="ImageViewWithAsynchLoader" customModule="FlickrBrowsr" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="89.5" height="89.5"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q5g-dk-bUz" customClass="ImageViewWithAsynchLoader" customModule="GIPHYTags" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="150" height="73.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="Q5g-dk-bUz" secondAttribute="height" multiplier="1:1" id="1Fe-G6-JJI"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="90" id="mPf-ca-wTD"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Q5g-dk-bUz" secondAttribute="bottom" id="92t-EP-G6l"/>
-                                                <constraint firstItem="Q5g-dk-bUz" firstAttribute="leading" secondItem="sSM-5z-hnL" secondAttribute="leading" id="UKf-nA-nv7"/>
-                                                <constraint firstItem="Q5g-dk-bUz" firstAttribute="top" secondItem="sSM-5z-hnL" secondAttribute="top" id="ed3-Zd-573"/>
+                                                <constraint firstItem="Q5g-dk-bUz" firstAttribute="width" secondItem="sSM-5z-hnL" secondAttribute="width" multiplier="0.4" id="5nq-j4-NOM"/>
+                                                <constraint firstItem="Q5g-dk-bUz" firstAttribute="leading" secondItem="sSM-5z-hnL" secondAttribute="leadingMargin" id="CDZ-Xt-w4x"/>
+                                                <constraint firstItem="Q5g-dk-bUz" firstAttribute="top" secondItem="sSM-5z-hnL" secondAttribute="topMargin" id="Yhe-qs-AfR"/>
+                                                <constraint firstItem="Q5g-dk-bUz" firstAttribute="centerY" secondItem="sSM-5z-hnL" secondAttribute="centerY" id="v3p-FV-apF"/>
                                             </constraints>
+                                            <viewLayoutGuide key="safeArea" id="oyR-up-LfO"/>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="imageViewHeightConstraint" destination="mPf-ca-wTD" id="slB-AL-fdP"/>
                                             <outlet property="imageViewWithLoader" destination="Q5g-dk-bUz" id="1zv-W3-Kvj"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RightTableViewCell" id="oaj-CF-y9s" customClass="RightImageTableViewCell" customModule="FlickrBrowsr" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RightTableViewCell" id="oaj-CF-y9s" customClass="RightImageTableViewCell" customModule="GIPHYTags" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="118" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oaj-CF-y9s" id="5NN-Wi-flT">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LiK-QU-B8z" customClass="ImageViewWithAsynchLoader" customModule="FlickrBrowsr" customModuleProvider="target">
-                                                    <rect key="frame" x="285.5" y="0.0" width="89.5" height="89.5"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LiK-QU-B8z" customClass="ImageViewWithAsynchLoader" customModule="GIPHYTags" customModuleProvider="target">
+                                                    <rect key="frame" x="217" y="8" width="150" height="73.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="LiK-QU-B8z" secondAttribute="height" multiplier="1:1" id="ah4-fh-9Iv"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="90" id="lI3-iM-ucQ"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="LiK-QU-B8z" firstAttribute="top" secondItem="5NN-Wi-flT" secondAttribute="top" id="7F0-Qi-PoP"/>
-                                                <constraint firstAttribute="trailing" secondItem="LiK-QU-B8z" secondAttribute="trailing" id="AJ3-Ac-0tq"/>
-                                                <constraint firstAttribute="bottom" secondItem="LiK-QU-B8z" secondAttribute="bottom" id="fKd-x5-rG3"/>
+                                                <constraint firstItem="LiK-QU-B8z" firstAttribute="top" secondItem="5NN-Wi-flT" secondAttribute="topMargin" id="HiN-wA-bbR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="LiK-QU-B8z" secondAttribute="bottom" id="YgH-oj-LBc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LiK-QU-B8z" secondAttribute="trailing" id="aQt-B4-m56"/>
+                                                <constraint firstItem="LiK-QU-B8z" firstAttribute="centerY" secondItem="5NN-Wi-flT" secondAttribute="centerY" id="j72-rD-lnF"/>
+                                                <constraint firstItem="LiK-QU-B8z" firstAttribute="width" secondItem="9hc-Hb-gxW" secondAttribute="width" multiplier="0.4" id="rk0-j1-MBE"/>
                                             </constraints>
+                                            <viewLayoutGuide key="safeArea" id="9hc-Hb-gxW"/>
                                         </tableViewCellContentView>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <connections>
+                                            <outlet property="imageViewHeightConstraint" destination="lI3-iM-ucQ" id="PSe-Ay-5d5"/>
                                             <outlet property="imageViewWithLoader" destination="LiK-QU-B8z" id="UWP-8v-uMc"/>
                                         </connections>
                                     </tableViewCell>
@@ -134,7 +142,7 @@
         <!--Settings View Controller-->
         <scene sceneID="QVC-tw-L6C">
             <objects>
-                <viewController id="LHT-Ee-d0g" customClass="SettingsViewController" customModule="FlickrBrowsr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LHT-Ee-d0g" customClass="SettingsViewController" customModule="GIPHYTags" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="deQ-UW-Wba"/>
                         <viewControllerLayoutGuide type="bottom" id="Hrj-N5-pJY"/>
@@ -144,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yR3-49-aiR" userLabel="Main Stack View">
-                                <rect key="frame" x="19" y="71" width="337.5" height="350.5"/>
+                                <rect key="frame" x="19" y="71" width="337.5" height="205"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="AIq-Q0-SdK">
                                         <rect key="frame" x="0.0" y="0.0" width="337.5" height="30"/>
@@ -166,8 +174,32 @@
                                         </subviews>
                                         <viewLayoutGuide key="safeArea" id="La8-ai-lGH"/>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="fGz-Fv-Vhz">
+                                        <rect key="frame" x="0.0" y="38" width="337.5" height="47.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udC-if-3hp">
+                                                <rect key="frame" x="0.0" y="0.0" width="98" height="19.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pnj-Yd-gRn">
+                                                <rect key="frame" x="0.0" y="19.5" width="129" height="28"/>
+                                                <subviews>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zpp-eH-TyY">
+                                                        <rect key="frame" x="20" y="0.0" width="109" height="29"/>
+                                                        <segments>
+                                                            <segment title="GIPHY"/>
+                                                            <segment title="Flickr"/>
+                                                        </segments>
+                                                    </segmentedControl>
+                                                </subviews>
+                                                <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="0.0"/>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="7o6-Ng-L3l">
-                                        <rect key="frame" x="0.0" y="38" width="337.5" height="55"/>
+                                        <rect key="frame" x="0.0" y="93.5" width="337.5" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acT-b2-f7L">
                                                 <rect key="frame" x="0.0" y="0.0" width="93.5" height="19.5"/>
@@ -195,55 +227,20 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="76y-Lv-gMm">
-                                        <rect key="frame" x="0.0" y="101" width="337.5" height="136.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="API URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVw-nT-NV5">
-                                                <rect key="frame" x="0.0" y="0.0" width="59" height="19.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yYL-rD-852">
-                                                <rect key="frame" x="0.0" y="19.5" width="337.5" height="117"/>
-                                                <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="http://api.flickr.com/services/feeds/photos_public.gne?&amp;format=json&amp;nojsoncallback=1&amp;tags=" translatesAutoresizingMaskIntoConstraints="NO" id="ISX-dX-a3e">
-                                                        <rect key="frame" x="20" y="0.0" width="317.5" height="64"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="64" id="hTj-b3-VlR"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="url"/>
-                                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                                                    </textView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cp-Hj-lvo">
-                                                        <rect key="frame" x="20" y="64" width="317.5" height="53"/>
-                                                        <string key="text">The URL must start with "https" unless it is within the flickr.com or the staticflickr.com domains.  It also should end with "tags=" or the equivalent.  Results must mimic flicker JSON.</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="0.0"/>
-                                            </stackView>
-                                        </subviews>
-                                        <viewLayoutGuide key="safeArea" id="xud-Si-h2s"/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZjQ-ih-Y3n">
-                                        <rect key="frame" x="0.0" y="245.5" width="337.5" height="48.5"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZjQ-ih-Y3n">
+                                        <rect key="frame" x="0.0" y="152.5" width="337.5" height="0.0"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max number of images to show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJf-jn-lx4">
-                                                <rect key="frame" x="0.0" y="0.0" width="226.5" height="19.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="226.5" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IvV-33-LBE">
-                                                <rect key="frame" x="0.0" y="19.5" width="139" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="139" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qW-Tf-3Th">
-                                                        <rect key="frame" x="20" y="0.0" width="17" height="29"/>
+                                                        <rect key="frame" x="20" y="0.0" width="17" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -266,7 +263,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="y93-go-jlO">
-                                        <rect key="frame" x="0.0" y="302" width="337.5" height="48.5"/>
+                                        <rect key="frame" x="0.0" y="156.5" width="337.5" height="48.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max number of levels to show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eG1-ZE-rlH">
                                                 <rect key="frame" x="0.0" y="0.0" width="215.5" height="19.5"/>
@@ -301,9 +298,6 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="NPV-0Z-7Kg" firstAttribute="width" secondItem="ISX-dX-a3e" secondAttribute="width" id="4Aw-C9-aTC"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -315,7 +309,7 @@
                         <viewLayoutGuide key="safeArea" id="5kG-xy-kaj"/>
                     </view>
                     <connections>
-                        <outlet property="apiURLTextView" destination="ISX-dX-a3e" id="0Fx-IX-CPB"/>
+                        <outlet property="imageSourceControl" destination="zpp-eH-TyY" id="2et-sR-bp8"/>
                         <outlet property="numberOfImagesLabel" destination="5qW-Tf-3Th" id="vnq-rl-xWj"/>
                         <outlet property="numberOfImagesStepper" destination="aN7-18-eYg" id="vKn-fW-3XR"/>
                         <outlet property="numberOfLevelsLabel" destination="m7E-wu-sez" id="gtK-s1-hwH"/>
@@ -339,7 +333,7 @@
         <!--Selector View Controller-->
         <scene sceneID="V4s-ZO-ZMj">
             <objects>
-                <viewController id="XAo-e4-ihz" customClass="SelectorViewController" customModule="FlickrBrowsr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XAo-e4-ihz" customClass="SelectorViewController" customModule="GIPHYTags" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G92-MT-63Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -354,7 +348,7 @@
                                 <rect key="frame" x="0.0" y="41" width="375" height="582"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectableTableViewCell" id="jwF-vE-1gR" customClass="SelectableTableViewCell" customModule="FlickrBrowsr" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SelectableTableViewCell" id="jwF-vE-1gR" customClass="SelectableTableViewCell" customModule="GIPHYTags" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jwF-vE-1gR" id="DsZ-lj-JXX">
