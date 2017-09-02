@@ -10,6 +10,7 @@ import UIKit
 import SwiftGifOrigin
 
 //this isn't a UIImageView extension, because we want a class imageCache
+@IBDesignable
 class ImageViewWithAsynchLoader: UIImageView {
     static let imageCache = NSCache<NSString, UIImage>()
 

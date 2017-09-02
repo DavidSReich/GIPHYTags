@@ -13,10 +13,12 @@ protocol ImageModelProtocol {
     func getTags() -> [String]
     func getIsGif() -> Bool
     func getImageSize() -> CGSize
+    func getLargeImagePath() -> String
 }
 
 struct ImageModel {
     fileprivate var imagePath = ""
+    fileprivate var largeImagePath = ""
     fileprivate var tags = [String]()  //can't do Codable, because there is no simple mapping that will do String.components(separatedBy:)
     fileprivate var isGif = true
     fileprivate var imageSize = CGSize()
@@ -29,6 +31,11 @@ struct ImageModel {
                 let imagePath = fixedWidth["url"] as? String else { return nil }
 
         self.imagePath = imagePath
+
+        if let original = images["original"] as? [String: Any],
+                let imagePath = original["url"] as? String {
+            largeImagePath = imagePath
+        }
 
         if let widthStr = fixedWidth["width"] as? String,
                 let widthDouble = Double(widthStr) {
@@ -63,6 +70,10 @@ extension ImageModel: ImageModelProtocol {
 
     func getImageSize() -> CGSize {
         return imageSize
+    }
+
+    func getLargeImagePath() -> String {
+        return largeImagePath
     }
 }
 

@@ -18,6 +18,8 @@ class MainViewController: UIViewController {
     fileprivate let selectorSegueID = "SelectorPopoverSegue"
     fileprivate let mainViewSegueID = "MainViewControllerSegue"
     fileprivate let settingsSegueID = "SettingsViewControllerSegue"
+    fileprivate let imageViewLeftSegueID = "ImageViewFromLeftSegue"
+    fileprivate let imageViewRightSegueID = "ImageViewFromRightSegue"
 
     fileprivate let dataManager = DataManager()
     private var viewManager: ViewManager?
@@ -127,8 +129,14 @@ extension MainViewController {
         } else if segue.identifier == mainViewSegueID {
             //Here's where we're going forward to another instance of the MainVC.
             //We need to give it the next state and whatever's been selected in the selector VC(s)
-            if let MainViewController = segue.destination as? MainViewController {
-                MainViewController.setState(viewControllerLevel: self.viewControllerLevel + 1, imageTags: selectedTags)
+            if let mainViewController = segue.destination as? MainViewController {
+                mainViewController.setState(viewControllerLevel: self.viewControllerLevel + 1, imageTags: selectedTags)
+            }
+        } else if segue.identifier == imageViewLeftSegueID || segue.identifier == imageViewRightSegueID {
+            if let imageViewController = segue.destination as? ImageTableViewCellProtocol,
+                    let selectedRowIndex = imagesTableView.indexPathForSelectedRow?.row,
+                    let imageModel = dataManager.getImageModel(index: selectedRowIndex) {
+                imageViewController.setupCell(imagePath: imageModel.getLargeImagePath(), isGif: imageModel.getIsGif())
             }
         }
     }
