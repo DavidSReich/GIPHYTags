@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SelectorViewDelegate {
-    func gotToSelection()
+    func goToSelection()
 }
 
 class SelectorViewController: UIViewController {
@@ -37,7 +37,7 @@ class SelectorViewController: UIViewController {
         //do this programmatically here because we need to call goToSelection AFTER performSegue returns.
         performSegue(withIdentifier: unwindToMainViewSegue, sender: nil)
         if delegate != nil {
-            delegate?.gotToSelection()
+            delegate?.goToSelection()
         }
     }
 
@@ -106,15 +106,5 @@ extension SelectorViewController: UITableViewDelegate {
         guard indexPath.row < pickerData.count else { return }
         pickerData[indexPath.row].1 = false
     }
-
-//    func setSelected(_ tableView: UITableView, changeRowAt indexPath: IndexPath, selected: Bool) {
-//        guard indexPath.row < pickerData.count else { return }
-//        pickerData[indexPath.row].1 = selected
-//        if selected {
-//            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-//        } else {
-//            tableView.deselectRow(at: indexPath, animated: true)
-//        }
-//    }
 }
 

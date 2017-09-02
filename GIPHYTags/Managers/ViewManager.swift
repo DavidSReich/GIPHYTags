@@ -46,6 +46,8 @@ extension ViewManager: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let imageModel = dataManagerDelegate.getImageModel(index: indexPath.row) {
             let imageSize = imageModel.getImageSize()
+            guard imageSize.width > 0 else { return 150 }
+
             let aspect = imageSize.height / imageSize.width
             return 150 * aspect
         }
@@ -55,10 +57,6 @@ extension ViewManager: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

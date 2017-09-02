@@ -16,12 +16,10 @@ class UserDefaultsManager {
     static let MaxNumberOfImagesKey = "maxnumberofImages"
     static let MaxNumberOfLevelsKey = "maxnumberofLevels"
 
-    //https://api.giphy.com/v1/gifs/search?api_key=39e2cefae3444ec79e277251af1f0848&q=funny+cat
-	//"https://api.giphy.com/v1/gifs/search?api_key=39e2cefae3444ec79e277251af1f0848&limit=25&offset=0&rating=G&lang=en&q=cows"
     static let GIPHYApiKey = "39e2cefae3444ec79e277251af1f0848"
     static let giphyAPIURL = "https://api.giphy.com/v1/gifs/search?api_key=" + GIPHYApiKey + "&q="
 
-    static let defaultInitialTags = "weather"  //plus delimited list i.e. "tag1+tag2+tag3", or comma delimited, etc.
+    static let defaultInitialTags = "weather"  //plus delimited list i.e. "tag1+tag2+tag3"
     static let defaultMaxNumberOfImages = 25
     static let defaultMaxNumberOfLevels = 10
 
@@ -33,10 +31,10 @@ class UserDefaultsManager {
         }
     }
 
-    //these could be get/set properties
-
-    class func getAPIURL(defaults: UserDefaults = UserDefaultsManager.appDefaults) -> String {
-        return giphyAPIURL
+    class var APIURL: String {
+        get {
+            return giphyAPIURL
+        }
     }
 
     class func getInitialTags(defaults: UserDefaults = UserDefaultsManager.appDefaults) -> String {
@@ -68,6 +66,7 @@ class UserDefaultsManager {
         defaults.set(maxNumber, forKey: MaxNumberOfLevelsKey)
     }
 
+    //this method is not used currently, although it could become necessary in a more complex application.
     class func synchronizeUserDefaults() {
         appDefaults.synchronize()
     }

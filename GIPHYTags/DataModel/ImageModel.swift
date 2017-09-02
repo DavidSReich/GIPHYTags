@@ -25,7 +25,7 @@ struct ImageModel {
 
     //parse the json
     init?(json: [String: Any]) {
-        //use guard and return nil because we don't want to create this without an imagePath
+        //use guard and return nil because we don't want to create this without an image
         guard let images = json["images"] as? [String: Any],
                 let fixedWidth = images["fixed_width"] as? [String: Any],
                 let imagePath = fixedWidth["url"] as? String else { return nil }

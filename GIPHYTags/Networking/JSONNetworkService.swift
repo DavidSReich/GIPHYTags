@@ -11,9 +11,9 @@ import Foundation
 class JSONNetworkService {
 
     class func getJSON(tagsString: String, completion: @escaping (Data?, Error?) -> ()) -> Bool {
-        guard let tagsString = tagsString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return false }
-
-        let urlString = UserDefaultsManager.getAPIURL() + tagsString
+        guard let urlString = (UserDefaultsManager.APIURL + tagsString).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return false
+        }
 
         guard let dataTask = URLSession.urlSessionDataTask(urlString: urlString, completion: completion) else {
             return false

@@ -30,12 +30,6 @@ class SettingsViewController: UIViewController {
         loadSettings()
     }
 
-    @IBAction func cancelButtonTouched(_ sender: UIButton) {
-        if let navController = self.navigationController {
-            navController.popViewController(animated: true)
-        }
-    }
-
     @IBAction func numberOfImagesStepperChanged(_ sender: UIStepper) {
         numberOfImagesLabel.text = String(Int(numberOfImagesStepper.value))
     }
@@ -64,7 +58,7 @@ class SettingsViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == unwindFromSettingsID {
-            //this means Apply was pressed - we don't want to save on Cancel or Back
+            //this means Apply was pressed - so save - we don't want to save if Back was pressed
             saveSettings()
         }
     }

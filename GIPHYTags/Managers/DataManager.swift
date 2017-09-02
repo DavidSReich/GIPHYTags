@@ -31,7 +31,8 @@ class DataManager {
             }
 
             let imagemodels = ImageModel.GetImages(from: data)
-            print("imagemodels: \(imagemodels)")
+            //print("imagemodels: \(imagemodels)")
+            print("imagemodels.count: \(imagemodels.count)")
 
             self.imageDataSource = ImageDataSource(with: imagemodels)
             completion()

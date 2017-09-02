@@ -10,20 +10,16 @@ import Foundation
 
 //this doesn't really extend URLSession -
 // it's just a global helper function -
-// should be in its own class
+// should probably be in its own class,
+// but future could add functionality that would be appropriate for an extension
+// let's leave it this way for now
 extension URLSession {
     class func urlSessionDataTask(urlString: String, completion: @escaping (Data?, Error?) -> ()) -> URLSessionDataTask? {
 
-//        let urlString = "https://api.giphy.com/v1/gifs/search?api_key=3939e2cefae3444ec79e277251af1f0848&q=weather"
-//        let urlString = "http://api.giphy.com/v1/gifs/search?q=weather&api_key=3939e2cefae3444ec79e277251af1f0848"
-        // cows good:
-//        let urlString = "https://api.giphy.com/v1/gifs/search?api_key=39e2cefae3444ec79e277251af1f0848&limit=25&offset=0&rating=G&lang=en&q=cows"
         guard let url = URL(string: urlString) else {
             print("Cannot make URL from: \(urlString)")
             return nil
         }
-
-        //urlString  "https://api.giphy.com/v1/gifs/search?api_key=3939e2cefae3444ec79e277251af1f0848&q=weather"    
 
         print("URL: \(url)")
         let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in

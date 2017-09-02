@@ -21,6 +21,10 @@ class MainViewController: UIViewController {
     fileprivate let imageViewLeftSegueID = "ImageViewFromLeftSegue"
     fileprivate let imageViewRightSegueID = "ImageViewFromRightSegue"
 
+    // if we had more different DataManagers and/or ViewManagers:
+    //    a. they would have a common protocol and not be directly manipulated
+    //    b. there would be yet another manager that would contain and handle both of those
+    //    c. this new manager would be the thing used here and the view and data managers would be hidden
     fileprivate let dataManager = DataManager()
     private var viewManager: ViewManager?
 
@@ -92,9 +96,9 @@ extension MainViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == selectorSegueID {
             //RIGHT NAV BUTTON
-            //if the user tapped the Start button then we want to go back to the top AND not segue.
+            //if the user tapped the Start button then we want to go back to the first VC AND not segue.
             //we cannot use an unwind segue to skip to the root (unless we create it at run-time)
-            //because in the storyboard there's only one MainViewController
+            //because in the storyboard there's only one MainViewController and unwind segues are identified by the method signatures
             //This isn't that complicated.  There isn't enough code here to be complicated or tricky.
             if rightButton.title == "Start" {
                 if let navController = self.navigationController {
@@ -146,6 +150,8 @@ extension MainViewController {
             //Coming back from the Selector VC - get whatever was selected
             let selectedTags = selectorViewController.getSelectionPicked()
             self.selectedTags = selectedTags.joined(separator: UserDefaultsManager.tagsSeparator)
+            //the SelectorViewController will invoke the SelectorViewDelegate.goToSelection (below) after this returns.
+            //the mainViewSegueID will pass the selectedTags to the destination VC
         }
     }
 
@@ -162,7 +168,7 @@ extension MainViewController: SelectorViewDelegate {
     //AFTER the Selector VC unwind segue is done (see above)
     //The Selector VC then needs to tell this VC to go to the next VC
     //and filter by the selection(s)
-    func gotToSelection() {
+    func goToSelection() {
         performSegue(withIdentifier: mainViewSegueID, sender: nil)
     }
 }
