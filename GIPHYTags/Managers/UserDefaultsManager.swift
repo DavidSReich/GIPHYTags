@@ -17,7 +17,9 @@ class UserDefaultsManager {
     static let MaxNumberOfLevelsKey = "maxnumberofLevels"
 
     static let GIPHYApiKey = "39e2cefae3444ec79e277251af1f0848"
-    static let giphyAPIURL = "https://api.giphy.com/v1/gifs/search?api_key=" + GIPHYApiKey + "&q="
+    static let giphyAPIURLFront = "https://api.giphy.com/v1/gifs/search?api_key="
+    static let giphyAPIURLMiddle = "&limit="
+    static let giphyAPIURLBack = "&q="
 
     static let defaultInitialTags = "weather"  //plus delimited list i.e. "tag1+tag2+tag3"
     static let defaultMaxNumberOfImages = 25
@@ -33,7 +35,7 @@ class UserDefaultsManager {
 
     class var APIURL: String {
         get {
-            return giphyAPIURL
+            return giphyAPIURLFront + GIPHYApiKey + giphyAPIURLMiddle + "\(UserDefaultsManager.getMaxNumberOfImages)" + giphyAPIURLBack
         }
     }
 

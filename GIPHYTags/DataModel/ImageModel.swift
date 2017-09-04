@@ -94,7 +94,7 @@ extension ImageModel {
         }
 
         for fullItem in allItems {
-            print("fullitem: \(fullItem)")
+//            print("fullitem: \(fullItem)")
             if let imageModel = ImageModel(json: fullItem) {
                 imageModels.append(imageModel)
             }

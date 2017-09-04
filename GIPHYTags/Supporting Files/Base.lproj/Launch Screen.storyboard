@@ -32,20 +32,29 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2017 Stellar Software Pty Ltd. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="32" y="527.5" width="256" height="20.5"/>
+                                <rect key="frame" x="32" y="475" width="256" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PoweredBy_200px-White_HorizLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="pbI-i9-N7l">
+                                <rect key="frame" x="64" y="507.5" width="192" height="40.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pbI-i9-N7l" secondAttribute="height" multiplier="200:42" id="RmT-eI-VhC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="pbI-i9-N7l" firstAttribute="width" secondItem="Bcu-3y-fUS" secondAttribute="width" multiplier="0.6" id="0Gc-U0-pT4"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
                             <constraint firstItem="Eqj-cG-1Mc" firstAttribute="centerX" secondItem="Bcu-3y-fUS" secondAttribute="centerX" id="H3i-8b-6TP"/>
                             <constraint firstItem="Eqj-cG-1Mc" firstAttribute="width" secondItem="Bcu-3y-fUS" secondAttribute="width" multiplier="0.9" id="P0S-sc-MlQ"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
-                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
+                            <constraint firstItem="pbI-i9-N7l" firstAttribute="top" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="12" id="UqZ-RW-KH0"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="pbI-i9-N7l" secondAttribute="bottom" constant="20" id="UxJ-nU-ZQF"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="Eqj-cG-1Mc" secondAttribute="bottom" constant="8" id="cma-vG-VD3"/>
+                            <constraint firstItem="pbI-i9-N7l" firstAttribute="centerX" secondItem="Bcu-3y-fUS" secondAttribute="centerX" id="gsO-qv-pDy"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerY" secondItem="Bcu-3y-fUS" secondAttribute="centerY" multiplier="0.9" constant="1" id="moa-c2-u7t"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" symbolic="YES" id="x7j-FC-K8j"/>
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="width" secondItem="Bcu-3y-fUS" secondAttribute="width" multiplier="0.8" id="xGp-U2-YfA"/>
@@ -60,5 +69,6 @@
     </scenes>
     <resources>
         <image name="Giphy_Logo.png" width="250" height="63"/>
+        <image name="PoweredBy_200px-White_HorizLogo.png" width="200" height="42"/>
     </resources>
 </document>

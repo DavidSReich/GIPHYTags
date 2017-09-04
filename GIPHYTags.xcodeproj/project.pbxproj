@@ -13,6 +13,7 @@
 		632616DA1F3CD0630068F6A3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632616D91F3CD0630068F6A3 /* SettingsViewController.swift */; };
 		633693351F3C7EE500D8067F /* ImageViewWithAsynchLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633693341F3C7EE500D8067F /* ImageViewWithAsynchLoader.swift */; };
 		6341E40A1F58F4600067E74F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6341E4091F58F4600067E74F /* GradientView.swift */; };
+		63436E5C1F5D7DB700300E8C /* PoweredBy_200px-White_HorizLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 63436E5A1F5D7DB700300E8C /* PoweredBy_200px-White_HorizLogo.png */; };
 		634E6FA61F3CA314003905E8 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E6FA51F3CA314003905E8 /* ViewManager.swift */; };
 		634E6FA81F3CA3F7003905E8 /* LeftImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E6FA71F3CA3F7003905E8 /* LeftImageTableViewCell.swift */; };
 		635CA1341F3CA67A00AA2256 /* RightImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CA1331F3CA67A00AA2256 /* RightImageTableViewCell.swift */; };
@@ -52,6 +53,8 @@
 		632616D91F3CD0630068F6A3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		633693341F3C7EE500D8067F /* ImageViewWithAsynchLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewWithAsynchLoader.swift; sourceTree = "<group>"; };
 		6341E4091F58F4600067E74F /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		63436E591F5D364B00300E8C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		63436E5B1F5D7DB700300E8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = "Base.lproj/PoweredBy_200px-White_HorizLogo.png"; sourceTree = "<group>"; };
 		634E6FA51F3CA314003905E8 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		634E6FA71F3CA3F7003905E8 /* LeftImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftImageTableViewCell.swift; sourceTree = "<group>"; };
 		635CA1331F3CA67A00AA2256 /* RightImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -143,6 +146,7 @@
 		63F94D5F1F386B4300CBED9F = {
 			isa = PBXGroup;
 			children = (
+				63436E591F5D364B00300E8C /* README.md */,
 				63F94D6A1F386B4300CBED9F /* GIPHYTags */,
 				63F94D7F1F386B4300CBED9F /* GIPHYTagsTests */,
 				63F94D691F386B4300CBED9F /* Products */,
@@ -185,11 +189,12 @@
 		63F94D8B1F386BE400CBED9F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				631DB6F71F5BC43C00C3814A /* Giphy_Logo.png */,
 				63F94D6B1F386B4300CBED9F /* AppDelegate.swift */,
-				63F94D6F1F386B4300CBED9F /* Main.storyboard */,
 				63F94D721F386B4300CBED9F /* Assets.xcassets */,
 				63F94D771F386B4300CBED9F /* Info.plist */,
+				63F94D6F1F386B4300CBED9F /* Main.storyboard */,
+				631DB6F71F5BC43C00C3814A /* Giphy_Logo.png */,
+				63436E5A1F5D7DB700300E8C /* PoweredBy_200px-White_HorizLogo.png */,
 				63F464311F5BC078007D8C60 /* Launch Screen.storyboard */,
 			);
 			path = "Supporting Files";
@@ -311,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63436E5C1F5D7DB700300E8C /* PoweredBy_200px-White_HorizLogo.png in Resources */,
 				631DB6F91F5BC43C00C3814A /* Giphy_Logo.png in Resources */,
 				63F94D731F386B4300CBED9F /* Assets.xcassets in Resources */,
 				63F464331F5BC078007D8C60 /* Launch Screen.storyboard in Resources */,
@@ -470,6 +476,14 @@
 				631DB6F81F5BC43C00C3814A /* Base */,
 			);
 			name = Giphy_Logo.png;
+			sourceTree = "<group>";
+		};
+		63436E5A1F5D7DB700300E8C /* PoweredBy_200px-White_HorizLogo.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63436E5B1F5D7DB700300E8C /* Base */,
+			);
+			name = "PoweredBy_200px-White_HorizLogo.png";
 			sourceTree = "<group>";
 		};
 		63F464311F5BC078007D8C60 /* Launch Screen.storyboard */ = {
