@@ -25,7 +25,7 @@ class ViewManager: NSObject {
 
 extension ViewManager: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return min(dataManagerDelegate.imageCount(), UserDefaultsManager.getMaxNumberOfImages())
+        return dataManagerDelegate.imageCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

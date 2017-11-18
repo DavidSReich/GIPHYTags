@@ -65,7 +65,7 @@ class SelectorViewController: UIViewController {
 
 }
 
-//keep all this code in here ... this is just a picker.  It should be self-contained.
+//keep all this code in this file ... this is just a picker.  It should be self-contained.
 extension SelectorViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

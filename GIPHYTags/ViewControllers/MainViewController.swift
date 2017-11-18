@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
 
     // if we had more different DataManagers and/or ViewManagers:
     //    a. they would have a common protocol and not be directly manipulated
-    //    b. there would be yet another manager that would contain and handle both of those
+    //    b. there would be yet another manager that would contain and handle all of those
     //    c. this new manager would be the thing used here and the view and data managers would be hidden
     fileprivate let dataManager = DataManager()
     private var viewManager: ViewManager?
@@ -44,7 +44,16 @@ class MainViewController: UIViewController {
         imagesTableView.refreshControl = refreshControl
 
         updateControls()
-        loadEverything()
+
+        if viewControllerLevel == 0 && UserDefaultsManager.GIPHYApiKey.isEmpty {
+            performSegue(withIdentifier: settingsSegueID, sender: nil)
+            return
+        }
+
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil {
+            //don't make URL calls if in test
+            loadEverything()
+        }
     }
 
     @objc func refreshTableView(refreshControl: UIRefreshControl) {
@@ -97,9 +106,6 @@ extension MainViewController {
         if identifier == selectorSegueID {
             //RIGHT NAV BUTTON
             //if the user tapped the Start button then we want to go back to the first VC AND not segue.
-            //we cannot use an unwind segue to skip to the root (unless we create it at run-time)
-            //because in the storyboard there's only one MainViewController and unwind segues are identified by the method signatures
-            //This isn't that complicated.  There isn't enough code here to be complicated or tricky.
             if rightButton.title == "Start" {
                 if let navController = self.navigationController {
                     navController.popToRootViewController(animated: true)
@@ -111,7 +117,6 @@ extension MainViewController {
             //LEFT NAV BUTTON
             //If the user tapped the Back button then don't segue, instead just pop back one level
             //If the user tapped the Settings button then we do want to segue to the Settings VC.
-            //This isn't that complicated either.  There isn't enough code here to be complicated or tricky.
             if backButton.title == "Back" {
                 if let navController = self.navigationController {
                     navController.popViewController(animated: true)
@@ -167,7 +172,7 @@ extension MainViewController {
 extension MainViewController: SelectorViewDelegate {
     //AFTER the Selector VC unwind segue is done (see above)
     //The Selector VC then needs to tell this VC to go to the next VC
-    //and filter by the selection(s)
+    //and search by the selection(s)
     func goToSelection() {
         performSegue(withIdentifier: mainViewSegueID, sender: nil)
     }

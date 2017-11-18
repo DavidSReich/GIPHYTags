@@ -15,8 +15,8 @@ class UserDefaultsManager {
     static let InitialTagsKey = "initialtags"
     static let MaxNumberOfImagesKey = "maxnumberofImages"
     static let MaxNumberOfLevelsKey = "maxnumberofLevels"
+    static let GIPHYApiKeyKey = "GIPHYApiKey"
 
-    static let GIPHYApiKey = "39e2cefae3444ec79e277251af1f0848"
     static let giphyAPIURLFront = "https://api.giphy.com/v1/gifs/search?api_key="
     static let giphyAPIURLMiddle = "&limit="
     static let giphyAPIURLBack = "&q="
@@ -26,6 +26,18 @@ class UserDefaultsManager {
     static let defaultMaxNumberOfLevels = 10
 
     static let appDefaults = UserDefaults.standard
+
+    //remove this ... set to "" for publication
+    static let defaultGIPHYApiKey = "39e2cefae3444ec79e277251af1f0848"
+
+    class var GIPHYApiKey: String {
+        get {
+            return appDefaults.string(forKey: GIPHYApiKeyKey) ?? ""
+        }
+        set(newApiKey) {
+            appDefaults.set(newApiKey, forKey: GIPHYApiKeyKey)
+        }
+    }
 
     class var tagsSeparator: String {
         get {

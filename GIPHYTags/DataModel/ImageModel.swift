@@ -98,10 +98,6 @@ extension ImageModel {
             if let imageModel = ImageModel(json: fullItem) {
                 imageModels.append(imageModel)
             }
-
-            if imageModels.count >= UserDefaultsManager.getMaxNumberOfImages() {
-                break;
-            }
         }
 
         return imageModels
