@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7x7-mu-PyP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7x7-mu-PyP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -145,10 +145,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yR3-49-aiR" userLabel="Main Stack View">
-                                <rect key="frame" x="20" y="84" width="335" height="295.5"/>
+                                <rect key="frame" x="19" y="74" width="337.5" height="295.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="o77-oS-GTA">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="75.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="337.5" height="75.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GIPHY API Key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tra-ja-f7J">
                                                 <rect key="frame" x="0.0" y="0.0" width="107" height="19.5"/>
@@ -157,7 +157,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="place holder place holder place holder place holder" borderStyle="bezel" placeholder="enter GIPHY API Key ... here" minimumFontSize="6" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="kfF-bo-9Dy">
-                                                <rect key="frame" x="0.0" y="21.5" width="335" height="22"/>
+                                                <rect key="frame" x="0.0" y="21.5" width="337.5" height="22"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="URL" enablesReturnKeyAutomatically="YES" textContentType="url"/>
@@ -165,18 +165,35 @@
                                                     <action selector="giphyAPIKeyTextFieldChanged:" destination="LHT-Ee-d0g" eventType="editingChanged" id="Lt2-1Q-hl0"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeA-0u-RKL">
-                                                <rect key="frame" x="0.0" y="45.5" width="187" height="30"/>
-                                                <state key="normal" title="Get your GIPHY key here ..."/>
-                                                <connections>
-                                                    <action selector="getGIPHYKeyButtonTouched:" destination="LHT-Ee-d0g" eventType="touchUpInside" id="3uU-tv-GZD"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UCW-sr-b5a">
+                                                <rect key="frame" x="0.0" y="45.5" width="300.5" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeA-0u-RKL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
+                                                        <state key="normal" title="Get your GIPHY key here ..."/>
+                                                        <connections>
+                                                            <action selector="getGIPHYKeyButtonTouched:" destination="LHT-Ee-d0g" eventType="touchUpInside" id="3uU-tv-GZD"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A02-IH-4qA">
+                                                        <rect key="frame" x="187" y="5" width="9" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUo-fY-Fml">
+                                                        <rect key="frame" x="278.5" y="4" width="22" height="22"/>
+                                                        <connections>
+                                                            <action selector="helpGIPHYButtonTouched:" destination="LHT-Ee-d0g" eventType="touchUpInside" id="EkM-BH-8Hw"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <viewLayoutGuide key="safeArea" id="YVj-WB-65Y"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="7o6-Ng-L3l">
-                                        <rect key="frame" x="0.0" y="95.5" width="335" height="59"/>
+                                        <rect key="frame" x="0.0" y="95.5" width="337.5" height="59"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acT-b2-f7L">
                                                 <rect key="frame" x="0.0" y="0.0" width="93.5" height="19.5"/>
@@ -185,10 +202,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="5cy-q2-Fa5">
-                                                <rect key="frame" x="0.0" y="21.5" width="335" height="37.5"/>
+                                                <rect key="frame" x="0.0" y="21.5" width="337.5" height="37.5"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="place holder place holder place holder place holder" borderStyle="bezel" placeholder="enter tag1, tag2 ... here" minimumFontSize="6" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="NPV-0Z-7Kg">
-                                                        <rect key="frame" x="20" y="0.0" width="315" height="22"/>
+                                                        <rect key="frame" x="20" y="0.0" width="317.5" height="22"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="URL" enablesReturnKeyAutomatically="YES" textContentType="url"/>
@@ -205,7 +222,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZjQ-ih-Y3n">
-                                        <rect key="frame" x="0.0" y="174.5" width="335" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="174.5" width="337.5" height="50.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max number of images to show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJf-jn-lx4">
                                                 <rect key="frame" x="0.0" y="0.0" width="226.5" height="19.5"/>
@@ -240,7 +257,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="y93-go-jlO">
-                                        <rect key="frame" x="0.0" y="245" width="335" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="245" width="337.5" height="50.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max number of levels to show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eG1-ZE-rlH">
                                                 <rect key="frame" x="0.0" y="0.0" width="215.5" height="19.5"/>
@@ -275,13 +292,14 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <viewLayoutGuide key="safeArea" id="0xs-Rz-Pgl"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yR3-49-aiR" firstAttribute="leading" secondItem="5kG-xy-kaj" secondAttribute="leading" constant="20" id="3LJ-Iz-44G"/>
-                            <constraint firstItem="5kG-xy-kaj" firstAttribute="trailing" secondItem="yR3-49-aiR" secondAttribute="trailing" constant="20" id="DHx-AZ-goQ"/>
-                            <constraint firstItem="yR3-49-aiR" firstAttribute="top" secondItem="5kG-xy-kaj" secondAttribute="top" constant="20" id="kUL-h6-apj"/>
+                            <constraint firstItem="yR3-49-aiR" firstAttribute="width" secondItem="5kG-xy-kaj" secondAttribute="width" multiplier="0.9" id="0cd-2b-i0R"/>
+                            <constraint firstItem="yR3-49-aiR" firstAttribute="centerX" secondItem="5kG-xy-kaj" secondAttribute="centerX" id="7DH-Zv-GjW"/>
+                            <constraint firstItem="yR3-49-aiR" firstAttribute="top" secondItem="5kG-xy-kaj" secondAttribute="top" constant="10" id="l0e-It-eNF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5kG-xy-kaj"/>
                     </view>
@@ -393,7 +411,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="4" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxY-wW-3Qx">
-                                                    <rect key="frame" x="15" y="0.0" width="42" height="43.5"/>
+                                                    <rect key="frame" x="8" y="0.0" width="42" height="43.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

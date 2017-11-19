@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class SettingsViewController: UIViewController {
 
@@ -14,7 +15,6 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var applyButton: UIBarButtonItem!
-    @IBOutlet weak var getGIPHYKeyButton: UIButton!
 
     @IBOutlet weak var giphyAPIKeyTextField: UITextField!
     @IBOutlet weak var tagsTextField: UITextField!
@@ -35,6 +35,12 @@ class SettingsViewController: UIViewController {
         loadSettings()
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        giphyAPIKeyTextField.resignFirstResponder()
+        tagsTextField.resignFirstResponder()
+        super.touchesBegan(touches, with: event)
+    }
+
     @IBAction func backButtonTouched(_ sender: UIBarButtonItem) {
         if let navController = self.navigationController {
             navController.popViewController(animated: true)
@@ -42,6 +48,12 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func getGIPHYKeyButtonTouched(_ sender: UIButton) {
+        guard let url = URL(string: "https://developers.giphy.com/dashboard/?create=true") else {
+            return
+        }
+
+        let safariViewController = SFSafariViewController(url: url)
+        present(safariViewController, animated: true, completion: nil)
     }
 
     @IBAction func numberOfImagesStepperChanged(_ sender: UIStepper) {
@@ -56,14 +68,11 @@ class SettingsViewController: UIViewController {
         applyButton.isEnabled = !getGiphyAPIKeyString().isEmpty
     }
 
-//    @IBAction func gotoGIPHY(_ sender: UIButton) {
-//giphy.com/login
-//        guard let url = URL(string: "http://www.google.com") else {
-//            return
-//        }
-//
-//        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//    }
+    @IBAction func helpGIPHYButtonTouched(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "About GIPHY API Key", message: "To use GIPHY in this app you need to create a GIPHY account, and then create an App to get an API Key.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
 
     private func updateControls() {
         self.navigationItem.title = "Settings"
@@ -101,7 +110,6 @@ class SettingsViewController: UIViewController {
 
         return true
     }
-
 }
 
 //seguesSeguesSegues
@@ -115,12 +123,5 @@ extension SettingsViewController {
 
         return true
     }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == unwindFromSettingsID {
-//            //this means Apply was pressed - so save - we don't want to save if Back was pressed
-//            saveSettings()
-//        }
-//    }
 }
 
